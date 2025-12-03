@@ -1,0 +1,41 @@
+<%- include("layout", { body: `
+<section class="hero">
+    <h1 class="hero-title">Build Better Habits.</h1>
+    <p class="hero-subtitle">Track your progress and stay consistent.</p>
+    <a href="/habits/create" class="btn hero-btn">+ Create New Habit</a>
+</section>
+
+<section class="table-section">
+    <h2>Your Habits</h2>
+
+    <% if (habits.length === 0) { %>
+        <p class="empty-msg">No habits created yet.</p>
+    <% } else { %>
+        <table class="habit-table">
+            <tr>
+                <th>Habit</th>
+                <th>Frequency</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+
+            <% habits.forEach(habit => { %>
+                <tr>
+                    <td><a href="/habits/<%= habit._id %>"><%= habit.title %></a></td>
+                    <td><%= habit.frequency %></td>
+                    <td><%= habit.status %></td>
+                    <td>
+                        <a href="/habits/<%= habit._id %>" class="table-btn view">View</a>
+                        <% if (currentUser) { %>
+                            <a href="/habits/<%= habit._id %>/edit" class="table-btn edit">Edit</a>
+                            <form action="/habits/<%= habit._id %>/delete" method="POST" class="inline-form">
+                                <button class="table-btn delete">Delete</button>
+                            </form>
+                        <% } %>
+                    </td>
+                </tr>
+            <% }) %>
+        </table>
+    <% } %>
+</section>
+` }) %>

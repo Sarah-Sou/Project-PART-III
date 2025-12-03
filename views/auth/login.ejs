@@ -1,0 +1,13 @@
+<%- include("../layout", { body: `
+<h1>Login</h1>
+
+<form action="/login" method="POST" class="form-card">
+    <label>Username</label>
+    <input type="text" name="username" required>
+
+    <label>Password</label>
+    <input type="password" name="password" required>
+
+    <button class="btn submit-btn">Login</button>
+</form>
+` }) %>

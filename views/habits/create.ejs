@@ -1,0 +1,26 @@
+<%- include("../layout", { body: `
+<h1>Create New Habit</h1>
+
+<form action="/habits/create" method="POST" class="form-card">
+    <label>Habit Title</label>
+    <input type="text" name="title" required>
+
+    <label>Description</label>
+    <textarea name="description"></textarea>
+
+    <label>Frequency</label>
+    <select name="frequency" required>
+        <option value="Daily">Daily</option>
+        <option value="Weekly">Weekly</option>
+        <option value="Monthly">Monthly</option>
+    </select>
+
+    <label>Status</label>
+    <select name="status">
+        <option value="Active">Active</option>
+        <option value="Paused">Paused</option>
+    </select>
+
+    <button class="btn submit-btn">Create Habit</button>
+</form>
+` }) %>
