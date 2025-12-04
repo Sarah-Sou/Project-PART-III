@@ -1,6 +1,6 @@
 /* ============================================================
-   GLOBAL RESET + GLOBAL SETTINGS
-   ============================================================ */
+   GLOBAL RESET + BASE STYLE
+============================================================ */
 * {
   margin: 0;
   padding: 0;
@@ -16,7 +16,6 @@ body {
   min-height: 100vh;
 }
 
-/* Beautiful animated background */
 @keyframes gradientMove {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
@@ -24,8 +23,8 @@ body {
 }
 
 /* ============================================================
-   NAVBAR
-   ============================================================ */
+   NAVBAR (FIXED)
+============================================================ */
 .navbar {
   width: 100%;
   padding: 18px 40px;
@@ -35,77 +34,91 @@ body {
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid rgba(255,255,255,0.15);
+  position: relative;
+  z-index: 10;
 }
 
 .nav-left {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 12px;
 }
 
 .logo {
-  width: 50px;
-  height: 50px;
-  border-radius: 12px;
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  object-fit: contain;
 }
 
 .brand {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   font-weight: 700;
   color: #fff;
   text-decoration: none;
 }
 
-/* Navbar links */
-.nav-right .nav-link {
-  margin-left: 25px;
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.nav-link {
   text-decoration: none;
   color: #fff;
   font-size: 1rem;
   font-weight: 500;
-  transition: 0.25s;
   padding: 8px 14px;
   border-radius: 12px;
+  transition: 0.25s;
 }
 
-.nav-right .nav-link:hover {
+.nav-link:hover {
   background: rgba(255, 255, 255, 0.25);
-  color: #ffe073;
 }
 
 .logout {
   color: #ff4d6d !important;
 }
 
+/* Profile picture inside navbar */
+.nav-profile-pic {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #fff;
+}
+
 /* ============================================================
-   HERO / LANDING SECTION
-   ============================================================ */
+   HERO SECTION
+============================================================ */
 .hero {
   text-align: center;
-  padding: 110px 20px 80px;
+  padding: 120px 20px 60px;
 }
 
 .hero-title {
-  font-size: 3.5rem;
-  font-weight: 800;
-  text-shadow: 3px 3px 25px rgba(0,0,0,0.3);
+  font-size: 3.8rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  text-shadow: 3px 3px 25px rgba(0,0,0,0.25);
 }
 
 .hero-subtitle {
   font-size: 1.3rem;
   opacity: 0.9;
-  margin-top: 10px;
+  margin-bottom: 25px;
 }
 
-/* Main button */
 .hero-btn {
   display: inline-block;
-  margin-top: 30px;
   padding: 14px 32px;
-  font-weight: 600;
   border-radius: 40px;
   background: linear-gradient(135deg, #ffe073, #ff9d57);
   color: #000;
+  font-weight: 700;
   text-decoration: none;
   box-shadow: 0 8px 25px rgba(255, 150, 50, 0.5);
   transition: 0.3s;
@@ -113,21 +126,20 @@ body {
 
 .hero-btn:hover {
   transform: translateY(-4px) scale(1.05);
-  background: linear-gradient(135deg, #fff486, #ffc165);
 }
 
 /* ============================================================
-   HABIT TABLE
-   ============================================================ */
+   HABITS TABLE
+============================================================ */
 .table-section {
-  width: 93%;
+  width: 92%;
   max-width: 1100px;
   margin: 50px auto;
   padding: 35px;
   border-radius: 25px;
   background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255,255,255,0.18);
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
 .table-section h2 {
@@ -139,7 +151,6 @@ body {
 .habit-table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 15px;
 }
 
 .habit-table th,
@@ -157,11 +168,10 @@ body {
 .table-btn {
   padding: 7px 14px;
   border-radius: 10px;
-  color: white;
-  text-decoration: none;
   font-size: 0.9rem;
+  text-decoration: none;
+  color: white;
   transition: 0.2s;
-  display: inline-block;
 }
 
 .table-btn.view { background: #22d3ee; }
@@ -170,18 +180,17 @@ body {
 
 .table-btn:hover {
   transform: scale(1.07);
-  opacity: 0.9;
 }
 
 /* ============================================================
-   FORMS (CREATE / EDIT / LOGIN / REGISTER)
-   ============================================================ */
+   FORMS (Login/Register)
+============================================================ */
 .form-card {
   width: 92%;
-  max-width: 500px;
+  max-width: 450px;
   background: rgba(0, 0, 0, 0.25);
-  border-radius: 25px;
   padding: 28px;
+  border-radius: 25px;
   margin: 50px auto;
   backdrop-filter: blur(14px);
   border: 1px solid rgba(255,255,255,0.18);
@@ -189,20 +198,18 @@ body {
 
 .form-card label {
   font-weight: 600;
-  margin-bottom: 6px;
+  margin-top: 10px;
   display: block;
 }
 
-.form-card input,
-.form-card textarea,
-.form-card select {
+.form-card input {
   width: 100%;
-  background: rgba(255,255,255,0.85);
+  background: rgba(255,255,255,0.9);
   padding: 13px;
   border-radius: 12px;
-  border: 0;
+  border: none;
+  margin-top: 6px;
   margin-bottom: 18px;
-  font-size: 1rem;
 }
 
 .submit-btn {
@@ -219,48 +226,105 @@ body {
 
 .submit-btn:hover {
   transform: translateY(-4px);
-  background: linear-gradient(135deg, #9fffd0, #5af5dd);
 }
 
 /* ============================================================
-   VIEW HABIT PAGE
-   ============================================================ */
-.view-card {
-  width: 92%;
-  max-width: 580px;
-  background: rgba(255, 255, 255, 0.18);
-  padding: 30px;
-  border-radius: 25px;
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255,255,255,0.22);
-  margin: 50px auto;
+   OAUTH BUTTONS
+============================================================ */
+.oauth-row {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 10px;
 }
 
-.edit-btn {
-  background: #f8b824;
-  padding: 10px 16px;
-  border-radius: 12px;
-  color: #fff;
+.oauth-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 40px;
   text-decoration: none;
   font-weight: 600;
+  transition: 0.25s;
 }
 
-.delete-btn {
-  background: #ff4d6d;
-  padding: 10px 16px;
-  border-radius: 12px;
+.oauth-icon { width: 22px; height: 22px; }
+
+.oauth-btn.google { background: #fff; color: #000; }
+.oauth-btn.discord { background: #5865f2; color: #fff; }
+.oauth-btn.github { background: #000; color: #fff; }
+
+.oauth-btn:hover {
+  transform: scale(1.07);
+}
+
+/* ============================================================
+   PROFILE PAGE (UPDATED + FIXED)
+============================================================ */
+.profile-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 60px;
+}
+
+.profile-card {
+  width: 420px;
+  padding: 35px;
+  background: rgba(255,255,255,0.18);
+  border-radius: 25px;
+  text-align: center;
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,0.25);
+}
+
+.profile-avatar {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 4px solid #fff;
+  object-fit: cover;
+  margin-bottom: 20px;
+}
+
+/* File input */
+.profile-card input[type="file"] {
+  margin: 10px auto 20px;
+  display: block;
+  width: 80%;
+}
+
+/* Buttons side-by-side */
+.profile-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.profile-buttons button,
+.profile-buttons a {
+  padding: 12px 22px;
+  border-radius: 14px;
   border: none;
+  background: linear-gradient(135deg, #ffe073, #ffb25e);
+  color: #000;
+  font-weight: 700;
   cursor: pointer;
-  font-weight: 600;
+  transition: 0.3s;
+  text-decoration: none;
+}
+
+.profile-buttons button:hover,
+.profile-buttons a:hover {
+  transform: scale(1.06);
 }
 
 /* ============================================================
    FOOTER
-   ============================================================ */
+============================================================ */
 .footer {
   text-align: center;
   padding: 22px;
-  font-size: 1rem;
+  margin-top: 60px;
   opacity: 0.9;
-  margin-top: 80px;
 }

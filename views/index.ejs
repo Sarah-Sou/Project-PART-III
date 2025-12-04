@@ -7,21 +7,35 @@
 </head>
 <body>
 
+<!-- NAVBAR -->
 <%- include("partials/header") %>
 
+<!-- ============================
+     HERO SECTION
+============================ -->
 <section class="hero">
   <h1 class="hero-title">Build Better Habits.</h1>
   <p class="hero-subtitle">Track your progress and stay consistent every day.</p>
-  <a href="/habits/create" class="btn hero-btn">+ Create New Habit</a>
+
+  <% if (currentUser) { %>
+    <a href="/habits/create" class="hero-btn">+ Create New Habit</a>
+  <% } else { %>
+    <a href="/register" class="hero-btn">Get Started</a>
+  <% } %>
 </section>
 
+<!-- ============================
+     HABITS TABLE SECTION
+============================ -->
 <section class="table-section">
   <h2>Your Habits</h2>
 
   <% if (habits.length === 0) { %>
-    <p class="empty-msg">No habits created yet.</p>
-  <% } else { %>
+    <p class="empty-msg" style="text-align:center; font-size:1.2rem; opacity:0.85;">
+      No habits created yet.
+    </p>
 
+  <% } else { %>
     <table class="habit-table">
       <tr>
         <th>Habit</th>
@@ -32,15 +46,23 @@
 
       <% habits.forEach(habit => { %>
       <tr>
-        <td><a href="/habits/<%= habit._id %>"><%= habit.title %></a></td>
+        <td>
+          <a href="/habits/<%= habit._id %>" style="color:#fff; text-decoration:none;">
+            <%= habit.title %>
+          </a>
+        </td>
+
         <td><%= habit.frequency %></td>
         <td><%= habit.status %></td>
+
         <td>
           <a href="/habits/<%= habit._id %>" class="table-btn view">View</a>
 
           <% if (currentUser) { %>
             <a href="/habits/<%= habit._id %>/edit" class="table-btn edit">Edit</a>
-            <form action="/habits/<%= habit._id %>/delete" method="POST" class="inline-form">
+
+            <form action="/habits/<%= habit._id %>/delete" method="POST" class="inline-form"
+                  style="display:inline-block;">
               <button class="table-btn delete">Delete</button>
             </form>
           <% } %>
@@ -49,10 +71,11 @@
       <% }) %>
 
     </table>
-
   <% } %>
+
 </section>
 
+<!-- FOOTER -->
 <%- include("partials/footer") %>
 
 </body>
