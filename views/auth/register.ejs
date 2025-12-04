@@ -1,13 +1,27 @@
-<%- include("../layout", { body: `
-<h1>Create Account</h1>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Register</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<%- include("../partials/header") %>
+
+<h1 class="page-title">Create Account</h1>
 
 <form action="/register" method="POST" class="form-card">
-    <label>Username</label>
-    <input type="text" name="username" required>
+  <label>Username</label>
+  <input type="text" name="username" required>
 
-    <label>Password</label>
-    <input type="password" name="password" required>
+  <label>Password</label>
+  <input type="password" name="password" required>
 
-    <button class="btn submit-btn">Register</button>
+  <button class="submit-btn">Register</button>
 </form>
-` }) %>
+
+<%- include("../partials/footer") %>
+
+</body>
+</html>

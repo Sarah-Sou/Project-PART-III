@@ -9,21 +9,24 @@ const flash = require("connect-flash");
 const dotenv = require("dotenv");
 dotenv.config();
 
-// Models
+// Import Models
 const User = require("./models/User");
 
-// Routes
+// Import Routes
 const habitRoutes = require("./routes/habitRoutes");
 const authRoutes = require("./routes/authRoutes");
 
-// MIDDLEWARE
+// Express Setup
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+// Static Files
 app.use(express.static("public"));
+
+// View Engine
 app.set("view engine", "ejs");
 
-// SESSION
+// Session Setup
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
@@ -32,21 +35,27 @@ app.use(
   })
 );
 
+// Flash Messages
 app.use(flash());
 
-// PASSPORT CONFIG
+// Passport Init
 app.use(passport.initialize());
 app.use(passport.session());
 
+// Passport Strategy
 passport.use(
   new LocalStrategy(async (username, password, done) => {
     try {
       const user = await User.findOne({ username });
-      if (!user) return done(null, false, { message: "Incorrect username" });
+
+      if (!user) {
+        return done(null, false, { message: "Incorrect username" });
+      }
 
       const match = await bcrypt.compare(password, user.password);
-      if (!match)
+      if (!match) {
         return done(null, false, { message: "Incorrect password" });
+      }
 
       return done(null, user);
     } catch (err) {
@@ -55,6 +64,7 @@ passport.use(
   })
 );
 
+// Serialize & Deserialize
 passport.serializeUser((user, done) => done(null, user.id));
 
 passport.deserializeUser(async (id, done) => {
@@ -66,13 +76,13 @@ passport.deserializeUser(async (id, done) => {
   }
 });
 
-// CONNECT TO DB
+// MongoDB Connection
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB Connected"))
-  .catch((err) => console.log(err));
+  .catch((err) => console.log("MongoDB Error:", err));
 
-// GLOBAL USER VARIABLE
+// Globals for EJS
 app.use((req, res, next) => {
   res.locals.currentUser = req.user;
   res.locals.error = req.flash("error");
@@ -80,15 +90,17 @@ app.use((req, res, next) => {
   next();
 });
 
-// ROUTES
+// Routes
 app.use("/", authRoutes);
 app.use("/habits", habitRoutes);
 
-// HOME ROUTE
+// Home Route
 app.get("/", (req, res) => {
-  res.render("index");
+  res.render("index", { habits: [] });
 });
 
-// SERVER
-const PORT = 3000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+// Start Server
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`🚀 Server running at: http://localhost:${PORT}`);
+});

@@ -1,251 +1,266 @@
-/* ========== GLOBAL RESET ========== */
+/* ============================================================
+   GLOBAL RESET + GLOBAL SETTINGS
+   ============================================================ */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
 
 body {
-    background: linear-gradient(135deg, #6a11cb, #2575fc);
-    background-attachment: fixed;
-    color: #fff;
-    min-height: 100vh;
+  background: linear-gradient(135deg, #ff7af5, #6a5af9, #3bd9ff);
+  background-size: 300% 300%;
+  animation: gradientMove 12s ease infinite;
+  color: #fff;
+  min-height: 100vh;
 }
 
-/* ========== NAVBAR ========== */
+/* Beautiful animated background */
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ============================================================
+   NAVBAR
+   ============================================================ */
 .navbar {
-    width: 100%;
-    padding: 15px 40px;
-    background: rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(8px);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  width: 100%;
+  padding: 18px 40px;
+  background: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
 }
 
 .nav-left {
-    display: flex;
-    align-items: center;
-    gap: 15px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
 }
 
 .logo {
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
 }
 
 .brand {
-    color: #fff;
-    font-size: 1.6rem;
-    text-decoration: none;
-    font-weight: 600;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
 }
 
+/* Navbar links */
 .nav-right .nav-link {
-    color: #fff;
-    margin-left: 20px;
-    text-decoration: none;
-    font-weight: 500;
-    transition: 0.3s;
+  margin-left: 25px;
+  text-decoration: none;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: 0.25s;
+  padding: 8px 14px;
+  border-radius: 12px;
 }
 
 .nav-right .nav-link:hover {
-    color: #ffd700;
+  background: rgba(255, 255, 255, 0.25);
+  color: #ffe073;
 }
 
 .logout {
-    color: #ff4d4d !important;
+  color: #ff4d6d !important;
 }
 
-/* ========== HERO SECTION ========== */
+/* ============================================================
+   HERO / LANDING SECTION
+   ============================================================ */
 .hero {
-    text-align: center;
-    padding: 100px 20px;
+  text-align: center;
+  padding: 110px 20px 80px;
 }
 
 .hero-title {
-    font-size: 3rem;
-    font-weight: 700;
-    text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+  font-size: 3.5rem;
+  font-weight: 800;
+  text-shadow: 3px 3px 25px rgba(0,0,0,0.3);
 }
 
 .hero-subtitle {
-    font-size: 1.2rem;
-    opacity: 0.9;
-    margin-top: 10px;
+  font-size: 1.3rem;
+  opacity: 0.9;
+  margin-top: 10px;
 }
 
+/* Main button */
 .hero-btn {
-    display: inline-block;
-    margin-top: 25px;
-    padding: 12px 28px;
-    background: #ffdd57;
-    color: #000;
-    font-weight: 600;
-    border-radius: 30px;
-    text-decoration: none;
-    transition: 0.3s;
-    box-shadow: 0 4px 20px rgba(255, 221, 87, 0.5);
+  display: inline-block;
+  margin-top: 30px;
+  padding: 14px 32px;
+  font-weight: 600;
+  border-radius: 40px;
+  background: linear-gradient(135deg, #ffe073, #ff9d57);
+  color: #000;
+  text-decoration: none;
+  box-shadow: 0 8px 25px rgba(255, 150, 50, 0.5);
+  transition: 0.3s;
 }
 
 .hero-btn:hover {
-    background: #ffe680;
-    transform: translateY(-3px);
+  transform: translateY(-4px) scale(1.05);
+  background: linear-gradient(135deg, #fff486, #ffc165);
 }
 
-/* ========== TABLE SECTION ========== */
+/* ============================================================
+   HABIT TABLE
+   ============================================================ */
 .table-section {
-    width: 90%;
-    max-width: 1100px;
-    margin: 40px auto;
-    padding: 30px;
-    background: rgba(255,255,255,0.15);
-    border-radius: 20px;
-    backdrop-filter: blur(8px);
+  width: 93%;
+  max-width: 1100px;
+  margin: 50px auto;
+  padding: 35px;
+  border-radius: 25px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
 .table-section h2 {
-    text-align: center;
-    margin-bottom: 15px;
-    font-size: 2rem;
-}
-
-.empty-msg {
-    text-align: center;
-    opacity: 0.9;
+  text-align: center;
+  font-size: 2.3rem;
+  margin-bottom: 20px;
 }
 
 .habit-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
 }
 
 .habit-table th,
 .habit-table td {
-    padding: 14px;
-    border-bottom: 1px solid rgba(255,255,255,0.3);
-    text-align: center;
+  padding: 15px;
+  text-align: center;
+  border-bottom: 1px solid rgba(255,255,255,0.25);
 }
 
 .habit-table th {
-    background: rgba(0,0,0,0.3);
-}
-
-.habit-table a {
-    color: #fff;
-    font-weight: 500;
+  background: rgba(0,0,0,0.3);
+  font-size: 1.1rem;
 }
 
 .table-btn {
-    padding: 6px 12px;
-    border-radius: 10px;
-    font-size: 0.9rem;
-    color: #fff;
-    text-decoration: none;
-    margin: 3px;
-    display: inline-block;
-    transition: 0.3s;
+  padding: 7px 14px;
+  border-radius: 10px;
+  color: white;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: 0.2s;
+  display: inline-block;
 }
 
-.table-btn.view { background: #00c6ff; }
-.table-btn.edit { background: #f39c12; }
-.table-btn.delete { background: #e74c3c; }
+.table-btn.view { background: #22d3ee; }
+.table-btn.edit { background: #f8b824; }
+.table-btn.delete { background: #ff4d6d; }
 
 .table-btn:hover {
-    opacity: 0.8;
-    transform: scale(1.05);
+  transform: scale(1.07);
+  opacity: 0.9;
 }
 
-.inline-form {
-    display: inline-block;
-}
-
-/* ========== FORMS ========== */
+/* ============================================================
+   FORMS (CREATE / EDIT / LOGIN / REGISTER)
+   ============================================================ */
 .form-card {
-    width: 90%;
-    max-width: 480px;
-    margin: 30px auto;
-    background: rgba(0,0,0,0.25);
-    padding: 25px;
-    border-radius: 18px;
-    backdrop-filter: blur(10px);
+  width: 92%;
+  max-width: 500px;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 25px;
+  padding: 28px;
+  margin: 50px auto;
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,0.18);
 }
 
 .form-card label {
-    display: block;
-    margin-bottom: 6px;
-    font-weight: 600;
+  font-weight: 600;
+  margin-bottom: 6px;
+  display: block;
 }
 
 .form-card input,
 .form-card textarea,
 .form-card select {
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 15px;
-    border-radius: 12px;
-    border: none;
-    outline: none;
-    background: rgba(255,255,255,0.8);
-    color: #000;
-    font-size: 1rem;
+  width: 100%;
+  background: rgba(255,255,255,0.85);
+  padding: 13px;
+  border-radius: 12px;
+  border: 0;
+  margin-bottom: 18px;
+  font-size: 1rem;
 }
 
 .submit-btn {
-    width: 100%;
-    padding: 12px;
-    background: #00ffcc;
-    border-radius: 25px;
-    color: #000;
-    font-weight: 700;
-    cursor: pointer;
-    transition: 0.3s;
-    border: none;
+  width: 100%;
+  padding: 13px;
+  border-radius: 40px;
+  background: linear-gradient(135deg, #75f9b0, #3be4c2);
+  border: none;
+  color: #000;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
 .submit-btn:hover {
-    background: #66ffe6;
-    transform: translateY(-3px);
+  transform: translateY(-4px);
+  background: linear-gradient(135deg, #9fffd0, #5af5dd);
 }
 
-/* ========== VIEW HABIT CARD ========== */
+/* ============================================================
+   VIEW HABIT PAGE
+   ============================================================ */
 .view-card {
-    width: 85%;
-    max-width: 600px;
-    margin: 30px auto;
-    background: rgba(255,255,255,0.2);
-    padding: 25px;
-    border-radius: 18px;
-    backdrop-filter: blur(10px);
+  width: 92%;
+  max-width: 580px;
+  background: rgba(255, 255, 255, 0.18);
+  padding: 30px;
+  border-radius: 25px;
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.22);
+  margin: 50px auto;
 }
 
 .edit-btn {
-    background: #f39c12;
-    padding: 10px 16px;
-    border-radius: 14px;
-    color: #fff;
-    text-decoration: none;
-    display: inline-block;
-    margin: 10px 5px;
+  background: #f8b824;
+  padding: 10px 16px;
+  border-radius: 12px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
 }
 
 .delete-btn {
-    background: #e74c3c;
-    padding: 10px 16px;
-    border-radius: 14px;
-    color: #fff;
-    border: none;
-    cursor: pointer;
+  background: #ff4d6d;
+  padding: 10px 16px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
 }
 
-/* ========== FOOTER ========== */
+/* ============================================================
+   FOOTER
+   ============================================================ */
 .footer {
-    text-align: center;
-    padding: 20px;
-    opacity: 0.9;
-    margin-top: 50px;
-    font-size: 0.95rem;
+  text-align: center;
+  padding: 22px;
+  font-size: 1rem;
+  opacity: 0.9;
+  margin-top: 80px;
 }

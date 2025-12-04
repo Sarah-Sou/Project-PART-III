@@ -1,15 +1,30 @@
-<%- include("../layout", { body: `
-<h1><%= habit.title %></h1>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title><%= habit.title %></title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<%- include("../partials/header") %>
+
+<h1 class="page-title"><%= habit.title %></h1>
 
 <div class="view-card">
-    <p><strong>Description:</strong> <%= habit.description %></p>
-    <p><strong>Frequency:</strong> <%= habit.frequency %></p>
-    <p><strong>Status:</strong> <%= habit.status %></p>
+  <p><strong>Description:</strong> <%= habit.description %></p>
+  <p><strong>Frequency:</strong> <%= habit.frequency %></p>
+  <p><strong>Status:</strong> <%= habit.status %></p>
 
-    <a href="/habits/<%= habit._id %>/edit" class="btn edit-btn">Edit Habit</a>
-
+  <% if (currentUser) { %>
+    <a href="/habits/<%= habit._id %>/edit" class="edit-btn">Edit</a>
     <form action="/habits/<%= habit._id %>/delete" method="POST">
-        <button class="btn delete-btn">Delete Habit</button>
+      <button class="delete-btn">Delete</button>
     </form>
+  <% } %>
 </div>
-` }) %>
+
+<%- include("../partials/footer") %>
+
+</body>
+</html>

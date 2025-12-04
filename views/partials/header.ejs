@@ -1,16 +1,16 @@
 <header class="navbar">
-    <div class="nav-left">
-        <img src="/images/team-logo.png" class="logo" alt="Team Logo">
-        <a href="/" class="brand">Habit Tracker</a>
-    </div>
+  <div class="nav-left">
+    <img src="/images/logo.png" class="logo" />
+    <a href="/" class="brand">Habit Tracker</a>
+  </div>
 
-    <nav class="nav-right">
-        <% if (!currentUser) { %>
-            <a href="/login" class="nav-link">Login</a>
-            <a href="/register" class="nav-link">Register</a>
-        <% } else { %>
-            <a href="/habits" class="nav-link">All Habits</a>
-            <a href="/logout" class="nav-link logout">Logout</a>
-        <% } %>
-    </nav>
+  <nav class="nav-right">
+    <% if (!currentUser) { %>
+      <a href="/login" class="nav-link">Login</a>
+      <a href="/register" class="nav-link">Register</a>
+    <% } else { %>
+      <a href="/habits" class="nav-link">My Habits</a>
+      <a href="/logout" class="nav-link logout">Logout</a>
+    <% } %>
+  </nav>
 </header>

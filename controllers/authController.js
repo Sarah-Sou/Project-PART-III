@@ -1,18 +1,14 @@
-
 const User = require("../models/User");
 const bcrypt = require("bcryptjs");
 
-// GET Login Page
 exports.getLogin = (req, res) => {
   res.render("auth/login");
 };
 
-// GET Register Page
 exports.getRegister = (req, res) => {
   res.render("auth/register");
 };
 
-// POST Register User
 exports.registerUser = async (req, res) => {
   const { username, password } = req.body;
 
@@ -23,28 +19,23 @@ exports.registerUser = async (req, res) => {
       return res.redirect("/register");
     }
 
-    const hashedPassword = await bcrypt.hash(password, 10);
+    const hashed = await bcrypt.hash(password, 10);
 
-    const newUser = new User({
-      username,
-      password: hashedPassword,
-    });
-
+    const newUser = new User({ username, password: hashed });
     await newUser.save();
 
-    req.flash("success", "Account created! You can now login.");
+    req.flash("success", "Account created!");
     res.redirect("/login");
   } catch (err) {
     console.log(err);
-    req.flash("error", "Something went wrong.");
+    req.flash("error", "Error creating account");
     res.redirect("/register");
   }
 };
 
-// GET Logout
 exports.logoutUser = (req, res) => {
-  req.logout(function () {
-    req.flash("success", "Logged out successfully.");
+  req.logout(() => {
+    req.flash("success", "Logged out");
     res.redirect("/");
   });
 };
