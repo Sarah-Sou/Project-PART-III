@@ -20,13 +20,15 @@
       <!-- Profile with avatar -->
       <a href="/profile" class="nav-link profile-link">
         <img 
-          src="<%= currentUser.profilePic || '/uploads/default.png' %>" 
+          src="<%= (currentUser.profilePic && currentUser.profilePic.trim() !== '') 
+                  ? currentUser.profilePic 
+                  : '/uploads/default.png' %>"
           class="nav-profile-pic"
         />
         <span>Profile</span>
       </a>
 
-      <!-- ⭐ NEW: Change Password -->
+      <!-- Change Password -->
       <a href="/change-password" class="nav-link">Change Password</a>
 
       <!-- Logout -->
