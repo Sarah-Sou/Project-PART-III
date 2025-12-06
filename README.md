@@ -8,6 +8,10 @@ Features
 
 User authentication (login, register, logout)
 
+User Authentication: Sign up and Login using Local strategy.
+
+Social Login: Support for Google, GitHub, and Discord authentication.
+
 Ability to create, edit, and delete habits
 
 Habit list page to view all habits
@@ -45,3 +49,21 @@ MongoDB Atlas (cloud-hosted)
 Project Status
 
 The project is fully functional, deployed, and complete. The Angular frontend has been removed, and the final version uses Express and EJS as the primary frontend and backend combination.
+
+To install and set up this project
+
+
+Prerequisites
+
+Before running this project, ensure you have the following installed:
+- [Node.js](https://nodejs.org/) (v14 or higher recommended)
+- A [MongoDB Atlas](https://www.mongodb.com/atlas) account (or a local MongoDB installation)
+
+Installation & Setup
+Clone the repository (or download the source code)
+'''bash
+git clone <https://github.com/Sarah-Sou/Project-PART-III.git>
+cd <your-project-folder>
+npm install
+npm start
+http://localhost:3000
