@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 body {
   font-family: Arial, sans-serif;
   margin: 40px;
@@ -6,3 +7,13 @@ body {
 #habits {
   margin-top: 20px;
 }
+=======
+body {
+  font-family: Arial, sans-serif;
+  margin: 40px;
+}
+
+#habits {
+  margin-top: 20px;
+}
+>>>>>>> e54fb5d5749b26f17068c27e062ca02bbed1f144
