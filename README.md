@@ -36,8 +36,8 @@ Render (cloud deployment)
 
 Deployment Links
 
-Backend (Render):
-https://project-part-iii.onrender.com
+backend: https://project-part-iii-fixed.onrender.com/
+frontend:https://frontend-fm75.onrender.com/
 
 Database:
 MongoDB Atlas (cloud-hosted)
