@@ -1,5 +1,5 @@
 /* ============================================================
-   GLOBAL RESET + BASE STYLE
+   GLOBAL RESET AND BASE STYLES - Updated 2025
 ============================================================ */
 * {
   margin: 0;
@@ -11,7 +11,7 @@
 body {
   background: linear-gradient(135deg, #ff7af5, #6a5af9, #3bd9ff);
   background-size: 300% 300%;
-  animation: gradientMove 12s ease infinite;
+  animation: gradientMove 12000ms ease infinite;
   color: #fff;
   min-height: 100vh;
 }
@@ -26,9 +26,9 @@ body {
    NAVBAR (FIXED)
 ============================================================ */
 .navbar {
+  background: rgba(0, 0, 0, 0.25);
   width: 100%;
   padding: 18px 40px;
-  background: rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(10px);
   display: flex;
   justify-content: space-between;
@@ -52,6 +52,7 @@ body {
 }
 
 .brand {
+  display: inline-block; /* Often harmless for text links */
   font-size: 1.6rem;
   font-weight: 700;
   color: #fff;
