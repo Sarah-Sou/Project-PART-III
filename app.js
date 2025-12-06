@@ -9,17 +9,18 @@ const flash = require("connect-flash");
 const dotenv = require("dotenv");
 dotenv.config();
 
-// ⬅️ ADD CORS HERE
+// ⭐ CORS (Required for frontend)
 const cors = require("cors");
 app.use(cors());
 
 // Models
 const User = require("./models/User");
+const Habit = require("./models/Habit"); // ⭐ Needed for API
 
 // Routes
 const habitRoutes = require("./routes/habitRoutes");
 const authRoutes = require("./routes/authRoutes");
-const profileRoutes = require("./routes/profileRoutes"); // ⭐ REQUIRED
+const profileRoutes = require("./routes/profileRoutes");
 
 // GOOGLE ROUTES + STRATEGY
 const googleRoutes = require("./routes/googleRoutes");
@@ -29,8 +30,7 @@ require("./controllers/googleStrategy")(passport);
 const GitHubStrategy = require("passport-github2").Strategy;
 const DiscordStrategy = require("passport-discord").Strategy;
 
-
-// Middleware setup
+// Middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
@@ -47,7 +47,6 @@ app.use(
 app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
-
 
 /* ===============================================
      LOCAL STRATEGY
@@ -67,7 +66,6 @@ passport.use(
     }
   })
 );
-
 
 /* ===============================================
      DISCORD STRATEGY
@@ -100,7 +98,6 @@ passport.use(
   )
 );
 
-
 /* ===============================================
      GITHUB STRATEGY
 ================================================ */
@@ -131,7 +128,6 @@ passport.use(
   )
 );
 
-
 /* ===============================================
      SERIALIZE + DESERIALIZE
 ================================================ */
@@ -146,7 +142,6 @@ passport.deserializeUser(async (id, done) => {
   }
 });
 
-
 /* ===============================================
      DATABASE
 ================================================ */
@@ -154,7 +149,6 @@ mongoose
   .connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB Connected"))
   .catch((err) => console.log("MongoDB Error:", err));
-
 
 /* ===============================================
      GLOBAL EJS VARIABLES
@@ -166,15 +160,25 @@ app.use((req, res, next) => {
   next();
 });
 
+/* ===============================================
+     JSON API ROUTES (Frontend NEEDS this)
+================================================ */
+app.get("/api/habits", async (req, res) => {
+  try {
+    const habits = await Habit.find();
+    res.json(habits);
+  } catch (err) {
+    res.status(500).json({ error: "Failed to fetch habits" });
+  }
+});
 
 /* ===============================================
-     ROUTES
+     ROUTES (EJS)
 ================================================ */
 app.use("/", authRoutes);
-app.use("/", profileRoutes);  // ⭐ FIX — MUST BE HERE
+app.use("/", profileRoutes);
 app.use("/habits", habitRoutes);
 app.use(googleRoutes);
-
 
 /* ===============================================
      HOME
@@ -182,7 +186,6 @@ app.use(googleRoutes);
 app.get("/", (req, res) => {
   res.render("index", { habits: [] });
 });
-
 
 /* ===============================================
      START SERVER
