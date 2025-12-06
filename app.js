@@ -9,6 +9,10 @@ const flash = require("connect-flash");
 const dotenv = require("dotenv");
 dotenv.config();
 
+// ⬅️ ADD CORS HERE
+const cors = require("cors");
+app.use(cors());
+
 // Models
 const User = require("./models/User");
 

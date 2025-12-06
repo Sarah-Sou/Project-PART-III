@@ -3,32 +3,29 @@ const API_BASE = "https://project-part-iii.onrender.com";
 async function loadHabits() {
   try {
     const res = await fetch(`${API_BASE}/habits`);
-    const data = await res.json();
+    const habits = await res.json();
 
     const container = document.getElementById("habits");
     container.innerHTML = "";
 
-    if (!data.length) {
-      container.innerHTML = "<p>No habits found.</p>";
-      return;
-    }
+    habits.forEach(habit => {
+      const card = document.createElement("div");
+      card.className = "habit-card";
 
-    data.forEach(habit => {
-      const div = document.createElement("div");
-      div.className = "habit-item";
-      div.textContent = habit.name;
+      card.innerHTML = `
+        <div class="habit-title">${habit.name}</div>
 
-      // Make them clickable
-      div.onclick = () => {
-        window.location.href = `${API_BASE}/habits/${habit._id}`;
-      };
-
-      container.appendChild(div);
+        <div class="actions">
+          <a class="view-btn" href="${API_BASE}/habits/${habit._id}" target="_blank">View</a>
+          <a class="edit-btn" href="${API_BASE}/habits/edit/${habit._id}" target="_blank">Edit</a>
+          <a class="delete-btn" href="${API_BASE}/habits/delete/${habit._id}" target="_blank">Delete</a>
+        </div>
+      `;
+      container.appendChild(card);
     });
 
   } catch (err) {
     console.error(err);
-    document.getElementById("habits").innerHTML = "Error loading habits.";
   }
 }
 
