@@ -1,19 +1,37 @@
-<<<<<<< HEAD
 body {
+  margin: 0;
+  padding: 40px;
   font-family: Arial, sans-serif;
-  margin: 40px;
+  background: #f6f8fb;
+  color: #222;
+  text-align: center;
 }
 
-#habits {
-  margin-top: 20px;
-}
-=======
-body {
-  font-family: Arial, sans-serif;
-  margin: 40px;
+h1 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 30px;
 }
 
-#habits {
-  margin-top: 20px;
+.habit-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 400px;
+  margin: 0 auto;
 }
->>>>>>> e54fb5d5749b26f17068c27e062ca02bbed1f144
+
+.habit-item {
+  padding: 14px 18px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: 0.2s;
+  text-align: left;
+}
+
+.habit-item:hover {
+  background: #eef4ff;
+  transform: translateY(-2px);
+}
