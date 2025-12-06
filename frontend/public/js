@@ -1,4 +1,3 @@
-//stuff
 const API_BASE = "https://project-part-iii.onrender.com";
 
 async function loadHabits() {
